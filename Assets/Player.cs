@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     public GameObject[] disabledOnDeath;
     public bool active = true;
+    public bool dead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
         }
         broken.SetActive(true);
         active = false;
+        dead = true;
     }
 
     public void Win()

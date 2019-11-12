@@ -56,17 +56,21 @@ public class Level : MonoBehaviour
 
     private void WinState()
     {
-        //input etc
+        //input etc? Or just delay + show score calculation?
+        UIInformation.text = "Total Score: " + (score + (int)time).ToString();
     }
 
     private void PauseState()
     {
-        //input etc
+        if (Input.GetKeyDown(KeyCode.Space)) Continue();
+        if (Input.GetKeyDown(KeyCode.Escape)) ExitToMenu();
     }
 
     private void LostState()
     {
-        //Input etc
+        //Wait for input (escape to give up, space to continue(retry))
+        if (Input.GetKeyDown(KeyCode.Space)) RestartLevel();
+        if (Input.GetKeyDown(KeyCode.Escape)) ExitToMenu();
     }
 
     private void StartState()
@@ -89,13 +93,17 @@ public class Level : MonoBehaviour
             UIInformation.text = "";
         }
 
-
         if (time <= 0)
         {
             time = 0;
             Lose();
         }
 
+        if (player.dead)
+        {
+            Lose();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) Pause();
         UITime.text = ((int)time).ToString();
     }
 
@@ -123,24 +131,30 @@ public class Level : MonoBehaviour
     {
         if (player.active) player.Die();
         levelState = LevelState.Lost;
+        UIInformation.text = "You didn't make it, press space to retry. Press escape to exit to menu (lose progress)";
         //Show text "You didn't make it, press space to retry level, escape to exit to menu (lose progress)"
     }
 
     public void Pause()
     {
         //show menu that gives option to restart, continue or exit (to menu)
+        UIInformation.text = "Press space to continue. Press escape to exit to menu (lose progress)";
+        levelState = LevelState.Paused;
+        Time.timeScale = 0;
         //Previous state should ALWAYS be 'Active'
     }
 
     public void Continue()
     {
         //Previous state should ALWAYS be 'Paused'
+        UIInformation.text = "";
         levelState = LevelState.Active;
+        Time.timeScale = 1;
     }
 
     public void ExitToMenu()
     {
-        //Change scene to level and reset
+        //Change scene to level and reset (needs menu scene)
         SceneManager.LoadSceneAsync("Menu");
     }
 
@@ -148,10 +162,14 @@ public class Level : MonoBehaviour
     {
         score += 5;
         UIScore.text = score.ToString();
-        //Update UI
     }
 
-    
+    private void RestartLevel()
+    {
+        //Make level restartable somehow
+        //Reload level? (seems to be working just fine)
+        SceneManager.LoadSceneAsync(0);
+    }
     
 
 

@@ -11,7 +11,7 @@ public class Point : MonoBehaviour
         lvl.AddScore();
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
-
+        GetComponent<ParticleSystem>().Play();
         //Play PFX
     }
 }

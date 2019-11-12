@@ -46,7 +46,7 @@ public class GameMgr : MonoBehaviour
     {
         allTimes[currentLevel] = timeLeft;
         allPoints[currentLevel] = score;
-        //NextLevel or GameOver
+        //NextLevel or GameOver(thank you for playing/instructions on questionnaire)
     }
 
     public static void AddDeath()
