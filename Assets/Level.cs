@@ -131,8 +131,9 @@ public class Level : MonoBehaviour
     {
         if (player.active) player.Die();
         levelState = LevelState.Lost;
-        UIInformation.text = "You didn't make it, press space to retry. Press escape to exit to menu (lose progress)";
-        //Show text "You didn't make it, press space to retry level, escape to exit to menu (lose progress)"
+        string s = "You didn't make it, press SPACE to retry!" + '\n' + "Press escape to exit to menu (lose all progress).";
+        UIInformation.text = s;
+        //Show text "You didn't make it, press space to retry level, escape to exit to menu (lose progress)"        
     }
 
     public void Pause()

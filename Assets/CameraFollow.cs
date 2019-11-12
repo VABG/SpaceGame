@@ -11,10 +11,12 @@ public class CameraFollow : MonoBehaviour
     public Transform endPlanet;
     float yOffsetMult = 1;
     float yDistance;
+    Camera camera;
 
     // Start is called before the first frame update
     void Start()
     {
+        camera = GetComponent<Camera>();
         yDistance = endPlanet.position.y - startPlanet.position.y - startPlanet.localScale.y - endPlanet.localScale.y;
     }
 
@@ -25,11 +27,12 @@ public class CameraFollow : MonoBehaviour
         if (endPlanet.position.y - target.position.y < 12) yOffsetMult = -.75f;
         else yOffsetMult = 1;
 
+        camera.fieldOfView = Camera.HorizontalToVerticalFieldOfView(70, camera.aspect);
+
 
         Vector3 pos = Vector3.Lerp(transform.position, target.position + new Vector3(offset.x, offset.y * yOffsetMult, offset.z), 1 * Time.deltaTime);
         pos.x = 0;
         transform.position = pos;
-
 
         float offsetRes = target.position.y + offset.y;
         lookAtPos = Mathf.Lerp(lookAtPos, offsetRes, 3f * Time.deltaTime);
