@@ -24,8 +24,8 @@ public class Goal : MonoBehaviour
             timeStaying += Time.deltaTime;
             if (timeStaying >= timeToGoal)
             {
-                LevelCompleted();
                 done = true;
+                LevelCompleted();
             }
         }
     }
