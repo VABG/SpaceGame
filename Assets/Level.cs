@@ -25,6 +25,7 @@ public class Level : MonoBehaviour
     {
         Gravity.SetPlanets(planets);
         player.active = false;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -116,7 +117,8 @@ public class Level : MonoBehaviour
         UIFinalScore.text = (score + (int)time).ToString();
         //Calculate score (time + score)
         GameMgr.AddScore(score, time);
-        //check if last level
+        //Get next level
+        SceneManager.LoadSceneAsync(GameMgr.NextLevel());
         //If so, go to thank you screen
     }
 
@@ -169,7 +171,7 @@ public class Level : MonoBehaviour
     {
         //Make level restartable somehow
         //Reload level? (seems to be working just fine)
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
     
 

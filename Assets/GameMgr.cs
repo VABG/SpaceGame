@@ -14,6 +14,16 @@ public class GameMgr : MonoBehaviour
 
     public string[] levels;
 
+
+    public static void StartGame()
+    {
+        GameMgr.totalLevels = _instance.levels.Length;
+        GameMgr.currentLevel = 0;
+        GameMgr.allTimes = new float[GameMgr.totalLevels];
+        GameMgr.allPoints = new int[GameMgr.totalLevels];
+        GameMgr.deaths = new int[GameMgr.totalLevels];
+    }
+
     ///Singleton
     private static GameMgr _instance;
     public static GameMgr Instance { get { return _instance; } }
@@ -35,11 +45,6 @@ public class GameMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Make singleton
-        totalLevels = 1;
-        currentLevel = 0;
-        //Move from public to static??? Do I even need to?
-        totalLevels = levels.Length;
     }
 
     public static void AddScore(int score, float timeLeft)
@@ -54,8 +59,11 @@ public class GameMgr : MonoBehaviour
         deaths[currentLevel] += 1;
     }
 
-    public void SetLevel(string level)
+    public static string NextLevel()
     {
-
+        currentLevel++;
+        if (currentLevel >= totalLevels) return "Menu"; //TODO: Add final screen
+        return _instance.levels[currentLevel];
     }
+
 }

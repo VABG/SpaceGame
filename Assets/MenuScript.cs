@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,13 +23,14 @@ public class MenuScript : MonoBehaviour
     public void StartGame1()
     {
         HideUI();
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Level1_Cartoon");
+        GameMgr.StartGame();
     }
 
     public void StartGame2()
     {
         HideUI();
-        SceneManager.LoadSceneAsync("SampleScene");
+        SceneManager.LoadSceneAsync("Level1_Cartoon");
     }
 
     private void HideUI()
@@ -38,7 +40,8 @@ public class MenuScript : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();   
+        Application.Quit();
+        EditorApplication.ExitPlaymode();
     }
 
     public void GotoQuestionnaire()

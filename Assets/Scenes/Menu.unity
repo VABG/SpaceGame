@@ -151,12 +151,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1630297755}
-  m_Father: {fileID: 304889086}
-  m_RootOrder: 3
+  m_Father: {fileID: 2092768330}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 344, y: 197}
+  m_AnchoredPosition: {x: -27, y: 197}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &94545886
@@ -203,7 +203,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1529939302}
-        m_MethodName: StartGame1
+        m_MethodName: GotoQuestionnaire
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -279,13 +279,12 @@ RectTransform:
   - {fileID: 605941216}
   - {fileID: 1585265918}
   - {fileID: 2095036885}
-  - {fileID: 94545885}
   m_Father: {fileID: 2092768330}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 173, y: 0}
+  m_AnchoredPosition: {x: 268.99997, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &329527434
@@ -300,7 +299,7 @@ GameObject:
   - component: {fileID: 329527437}
   - component: {fileID: 329527436}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Instructions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: 0}
+  m_AnchoredPosition: {x: 188.99997, y: 0}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329527436
@@ -358,9 +357,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Instructions:
 
-    Goto: http://www.//LINKTOQUESTIONNAIRE
+    Go to questionnaire by pressing above button.
 
-    And fill in general information.
+    Fill in general information.
 
 
     Press play, which will randomly select the game to play.
@@ -512,6 +511,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605941215}
   m_CullTransparentMesh: 0
+--- !u!1 &736280643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736280645}
+  - component: {fileID: 736280644}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &736280644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736280643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054be08c5cb82e242953560f2d105b04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - Level1_Cartoon
+  - Level2_Cartoon
+--- !u!4 &736280645
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736280643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 731.8571, y: 473.92938, z: 0.20648193}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &758195926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UI: {fileID: 2092768326}
-  questionnaireURL: 
+  questionnaireURL: http://www.youtube.com/VABG
 --- !u!4 &1529939303
 Transform:
   m_ObjectHideFlags: 0
@@ -1325,6 +1370,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 329527435}
+  - {fileID: 94545885}
   - {fileID: 304889086}
   m_Father: {fileID: 0}
   m_RootOrder: 2
