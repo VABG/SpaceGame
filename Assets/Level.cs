@@ -58,7 +58,20 @@ public class Level : MonoBehaviour
     private void WinState()
     {
         //input etc? Or just delay + show score calculation?
-        UIInformation.text = "Total Score: " + (score + (int)time).ToString();
+        if (countdown < 0)
+        {
+            SceneManager.LoadSceneAsync(GameMgr.NextLevel());
+        }
+        if (countdown > 3)
+        {
+            UIInformation.text = "Score: " + score.ToString() + "  Time: " + ((int)time).ToString();
+        }
+        else
+        {
+            UIInformation.text = "Total Score: " + (score + (int)time).ToString();
+        }
+        countdown -= Time.deltaTime;
+
     }
 
     private void PauseState()
@@ -117,9 +130,7 @@ public class Level : MonoBehaviour
         UIFinalScore.text = (score + (int)time).ToString();
         //Calculate score (time + score)
         GameMgr.AddScore(score, time);
-        //Get next level
-        SceneManager.LoadSceneAsync(GameMgr.NextLevel());
-        //If so, go to thank you screen
+        countdown = 5;
     }
 
     public void StartGame()
