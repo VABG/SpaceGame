@@ -147,7 +147,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 94545884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 19}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1630297755}
@@ -362,13 +362,14 @@ MonoBehaviour:
     Fill in general information.
 
 
-    Press play, which will randomly select the game to play.
+    Press Start Game 1, which will start the first game.
 
 
-    When first game is done, continue questionnaire until told to play again.
+    When first game is completed, continue questionnaire until instructed  to play
+    again.
 
 
-    Play second game, complete questionnaire.
+    Play the second game, then complete questionnaire.
 
 
 

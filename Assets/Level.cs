@@ -20,7 +20,10 @@ public class Level : MonoBehaviour
     public Text UIFinalScore;
     public Text UITime;
     public Text UIInformation; //Reusable! Yay!
-    // Start is called before the first frame update
+
+    bool isChangingLevel = false;
+
+
     void Start()
     {
         Gravity.SetPlanets(planets);
@@ -57,20 +60,25 @@ public class Level : MonoBehaviour
 
     private void WinState()
     {
-        //input etc? Or just delay + show score calculation?
-        if (countdown < 0)
+        if (!isChangingLevel)
         {
-            SceneManager.LoadSceneAsync(GameMgr.NextLevel());
+            //input etc? Or just delay + show score calculation?
+            if (countdown < 0)
+            {
+                SceneManager.LoadSceneAsync(GameMgr.NextLevel());
+                isChangingLevel = true;
+            }
+            if (countdown > 3)
+            {
+                UIInformation.text = "Score: " + score.ToString() + " + Time: " + ((int)time).ToString();
+            }
+            else
+            {
+                UIInformation.text = "Total Score: " + (score + (int)time).ToString();
+            }
+            countdown -= Time.deltaTime;
         }
-        if (countdown > 3)
-        {
-            UIInformation.text = "Score: " + score.ToString() + "  Time: " + ((int)time).ToString();
-        }
-        else
-        {
-            UIInformation.text = "Total Score: " + (score + (int)time).ToString();
-        }
-        countdown -= Time.deltaTime;
+
 
     }
 
@@ -101,7 +109,7 @@ public class Level : MonoBehaviour
         time -= Time.deltaTime;
         timer += Time.deltaTime;
 
-        if (justStarted && timer > 2)
+        if (justStarted && timer > 1)
         {
             justStarted = false;
             UIInformation.text = "";
@@ -123,6 +131,7 @@ public class Level : MonoBehaviour
 
     public void Win()
     {
+        if (player.dead) return;
         player.Win();
         levelState = LevelState.Won;
         UIInformation.text = "You did it!";

@@ -45,6 +45,7 @@ public class GameMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     public static void AddScore(int score, float timeLeft)
