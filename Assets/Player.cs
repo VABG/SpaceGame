@@ -34,9 +34,9 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             body.AddRelativeForce(Vector3.up * accelerationForce * Time.deltaTime);
-            //if (!exhaustPFX.isPlaying) exhaustPFX.Play();
+            if (!exhaustPFX.isEmitting) exhaustPFX.Play();
         }
-        //else if (exhaustPFX.isPlaying) exhaustPFX.Stop();
+        else if (exhaustPFX.isEmitting) exhaustPFX.Stop();
 
         float rotation = 0;
         if (Input.GetKey(KeyCode.A))
