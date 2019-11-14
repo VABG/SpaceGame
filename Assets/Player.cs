@@ -63,8 +63,6 @@ public class Player : MonoBehaviour
     public void Die()
     {
         visuals.SetActive(false);
-        body.velocity = Vector3.zero;
-        body.angularVelocity = Vector3.zero;
         GetComponent<Collider>().enabled = false;
         GetComponent<PlanetGravity>().enabled = false;
         foreach (GameObject o in disabledOnDeath)
@@ -72,6 +70,14 @@ public class Player : MonoBehaviour
             o.SetActive(false);
         }
         broken.SetActive(true);
+        Rigidbody[] bodies = broken.GetComponentsInChildren<Rigidbody>();
+        foreach(Rigidbody b in bodies)
+        {
+            b.velocity = body.velocity;
+            b.angularVelocity = body.angularVelocity;
+        }
+        body.velocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
         active = false;
         dead = true;
     }
