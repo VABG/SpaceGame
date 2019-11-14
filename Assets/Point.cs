@@ -5,6 +5,29 @@ using UnityEngine;
 public class Point : MonoBehaviour
 {
     public Level lvl;
+    private Light l;
+    private bool fadeLight = false;
+    private float fadeTime = 1f;
+    private void Start()
+    {
+        l = GetComponent<Light>();
+    }
+
+    private void Update()
+    {
+        if (fadeLight)
+        {
+            fadeTime -= Time.deltaTime;
+            if (fadeTime <= 0)
+            {
+                l.enabled = false;
+                fadeLight = false;
+                this.gameObject.SetActive(false);
+                return;
+            }
+            l.intensity = fadeTime;
+        }        
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,5 +36,6 @@ public class Point : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         GetComponent<ParticleSystem>().Play();
         //Play PFX
+        fadeLight = true;
     }
 }
