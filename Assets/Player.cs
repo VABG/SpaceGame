@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public GameObject[] disabledOnDeath;
     public bool active = true;
     public bool dead = false;
+    public ParticleSystem exhaustPFX;
 
     // Start is called before the first frame update
     void Start()
@@ -32,8 +33,11 @@ public class Player : MonoBehaviour
         Vector3 acceleration = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            body.AddRelativeForce(Vector3.up * accelerationForce*Time.deltaTime);
+            body.AddRelativeForce(Vector3.up * accelerationForce * Time.deltaTime);
+            //if (!exhaustPFX.isPlaying) exhaustPFX.Play();
         }
+        //else if (exhaustPFX.isPlaying) exhaustPFX.Stop();
+
         float rotation = 0;
         if (Input.GetKey(KeyCode.A))
         {
@@ -44,6 +48,7 @@ public class Player : MonoBehaviour
             rotation += 1;
         }
         body.AddRelativeTorque(Vector3.back * rotation * rotationForce*Time.deltaTime);
+
     }
 
     private void OnCollisionEnter(Collision collision)
