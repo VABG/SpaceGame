@@ -15,7 +15,7 @@ public class Point : MonoBehaviour
 
     private void Update()
     {
-        if (fadeLight)
+        if (l != null && fadeLight)
         {
             fadeTime -= Time.deltaTime;
             if (fadeTime <= 0)
