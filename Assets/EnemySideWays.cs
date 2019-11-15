@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySideWays : MonoBehaviour
 {
-    public float distanceFromCenter;
+    private float distanceFromCenter = 6;
     public bool movingRight;
     public float speed = 10;
     // Start is called before the first frame update

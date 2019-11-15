@@ -6,26 +6,35 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    enum LevelState {Start, Paused, Active, Won, Lost }
+    enum LevelState {Start, Paused, Active, Won, Lost, FinalWin }
 
     LevelState levelState = LevelState.Start;
-    public Player player;
+    private Player player;
     public Transform[] planets;
     private float time = 60;
     private int score;
     private float countdown = 4;
     private float timer = 0;
     bool justStarted = true;
+    bool isChangingLevel = false;
+
+    //In-game HUD
+    public GameObject HUDInGameObject;
     public Text UIScore;
-    public Text UIFinalScore;
     public Text UITime;
     public Text UIInformation; //Reusable! Yay!
 
-    bool isChangingLevel = false;
+    //Score for all levlels
+    public GameObject UIScoreScreen;
+    public Text UITotalScore;
 
+    //Final score for last level
+    public GameObject UIFinalScreen;
+    public Text UIFinalScore;
 
     void Start()
     {
+        player = FindObjectOfType<Player>();
         Gravity.SetPlanets(planets);
         player.active = false;
         Time.timeScale = 1;
@@ -55,31 +64,57 @@ public class Level : MonoBehaviour
             case LevelState.Start:
                 StartState();
                 break;
+
+
+            case LevelState.FinalWin:
+                StartState();
+                break;
         }
     }
 
     private void WinState()
     {
-        if (!isChangingLevel)
+        //input etc? Or just delay + show score calculation?
+        if (countdown < 0)
         {
-            //input etc? Or just delay + show score calculation?
-            if (countdown < 0)
+            //Show next level button instead!
+            if (!isChangingLevel)
             {
-                SceneManager.LoadSceneAsync(GameMgr.NextLevel());
-                isChangingLevel = true;
+                if (Input.GetKeyDown(KeyCode.Space)) NextLevel();
             }
-            if (countdown > 3)
-            {
-                UIInformation.text = "Score: " + score.ToString() + " + Time: " + ((int)time).ToString();
-            }
-            else
-            {
-                UIInformation.text = "Total Score: " + (score + (int)time).ToString();
-            }
-            countdown -= Time.deltaTime;
         }
+        if (countdown > 3)
+        {
+            UITotalScore.text = "Score: " + score.ToString() + " + Time: " + ((int)time).ToString();
+        }
+        else
+        {
+            UITotalScore.text = "Total Score: " + (score + (int)time).ToString();
+        }
+        countdown -= Time.deltaTime;
+    }
 
+    public void SetFinalWin()
+    {
+        levelState = LevelState.FinalWin;
+        
+        UIFinalScreen.SetActive(true);
+    }
 
+    public void NextLevel()
+    {
+        string nextLevel = GameMgr.NextLevel();
+        if (nextLevel == "Menu")
+        {
+            SetFinalWin();
+        }
+        SceneManager.LoadSceneAsync(nextLevel);
+        isChangingLevel = true;
+    }
+
+    private void FinalWinState()
+    {
+        if (!isChangingLevel && Input.GetKeyDown(KeyCode.Space)) NextLevel();
     }
 
     private void PauseState()
@@ -135,11 +170,13 @@ public class Level : MonoBehaviour
         player.Win();
         levelState = LevelState.Won;
         UIInformation.text = "You did it!";
-        UIFinalScore.enabled = true;
-        UIFinalScore.text = (score + (int)time).ToString();
+        UIScoreScreen.SetActive(true);
+        UITotalScore.text = (score + (int)time).ToString();
         //Calculate score (time + score)
-        GameMgr.AddScore(score, time);
         countdown = 5;
+        GameMgr.AddScore(score, time);
+
+        HUDInGameObject.SetActive(false);
     }
 
     public void StartGame()

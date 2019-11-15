@@ -8,12 +8,10 @@ public class GameMgr : MonoBehaviour
     private static int[] allPoints;
     private static int[] deaths;
 
-
     private static int totalLevels;
     private static int currentLevel;
 
     public string[] levels;
-
 
     public static void StartGame()
     {
@@ -46,6 +44,15 @@ public class GameMgr : MonoBehaviour
     void Start()
     {
 
+    }
+    public static string GetScoreTable()
+    {
+        string scoreTable = "";
+        for (int i = 0; i < totalLevels; i++)
+        {
+            scoreTable += "Level" + (i + 1).ToString() + ": " + (allPoints[i] + (int)allTimes[i]).ToString() + " Deaths: " + deaths[i] + '\n';
+        }
+        return scoreTable;
     }
 
     public static void AddScore(int score, float timeLeft)

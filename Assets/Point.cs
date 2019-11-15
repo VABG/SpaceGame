@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    public Level lvl;
+    private Level lvl;
     private Light l;
     private bool fadeLight = false;
     private float fadeTime = 1f;
     private void Start()
     {
         l = GetComponent<Light>();
+        lvl = FindObjectOfType<Level>();
     }
 
     private void Update()

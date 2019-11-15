@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     public Vector3 offset = new Vector3(0, 1, -4);
     private float lookAtPos;
     public Transform startPlanet;
     public Transform endPlanet;
     float yOffsetMult = 1;
     float yDistance;
-    Camera camera;
+    Camera cam;
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = GetComponent<Camera>();
+        target = FindObjectOfType<Player>().transform;
+        cam = GetComponent<Camera>();
         yDistance = endPlanet.position.y - startPlanet.position.y - startPlanet.localScale.y - endPlanet.localScale.y;
     }
 
@@ -27,7 +28,7 @@ public class CameraFollow : MonoBehaviour
         if (endPlanet.position.y - target.position.y < 12) yOffsetMult = -.75f;
         else yOffsetMult = 1;
 
-        camera.fieldOfView = Camera.HorizontalToVerticalFieldOfView(70, camera.aspect);
+        cam.fieldOfView = Camera.HorizontalToVerticalFieldOfView(70, cam.aspect);
 
 
         Vector3 pos = Vector3.Lerp(transform.position, target.position + new Vector3(offset.x, offset.y * yOffsetMult, offset.z), 1 * Time.deltaTime);
