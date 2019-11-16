@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
         {
             b.velocity = body.velocity;
             b.angularVelocity = body.angularVelocity;
+            b.velocity += Vector3.Normalize(b.transform.position - transform.position) * 3;
         }
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
