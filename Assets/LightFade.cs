@@ -6,7 +6,6 @@ public class LightFade : MonoBehaviour
 {
     public float fadeTime = 1;
     private float startTime;
-    private float divider = 1;
     private Light l;
     // Start is called before the first frame update
     void Start()

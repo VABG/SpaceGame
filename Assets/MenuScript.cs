@@ -8,6 +8,9 @@ public class MenuScript : MonoBehaviour
 {
     public GameObject UI;
     public string questionnaireURL;
+    public string[] cartoonLevels;
+    public string[] realisticLevels;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +26,15 @@ public class MenuScript : MonoBehaviour
     public void StartGame1()
     {
         HideUI();
-        SceneManager.LoadSceneAsync("Level1_Cartoon");
-        GameMgr.StartGame();
+        GameMgr.StartGame(cartoonLevels);
+        SceneManager.LoadSceneAsync(cartoonLevels[0]);
     }
 
     public void StartGame2()
     {
         HideUI();
-        SceneManager.LoadSceneAsync("Level1_Cartoon");
+        GameMgr.StartGame(realisticLevels);
+        SceneManager.LoadSceneAsync(realisticLevels[0]);
     }
 
     private void HideUI()
@@ -41,7 +45,7 @@ public class MenuScript : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        EditorApplication.ExitPlaymode();
+        //EditorApplication.ExitPlaymode();
     }
 
     public void GotoQuestionnaire()

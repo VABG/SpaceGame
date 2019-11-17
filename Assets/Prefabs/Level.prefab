@@ -941,7 +941,7 @@ MonoBehaviour:
   UIScoreScreen: {fileID: 3861997778889478088}
   UITotalScore: {fileID: 8618670815699530012}
   UIFinalScreen: {fileID: 408440871735452488}
-  UIFinalScore: {fileID: 8618670815699530012}
+  UIFinalScore: {fileID: 408440871766921673}
 --- !u!114 &8618670813784350749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,3 +2736,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3861997779891570233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &408440871766921673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3473260801280956400, guid: 0f4f6172ce06e484a992d651c504b6ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 3861997779891570233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

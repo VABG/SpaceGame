@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
         body.angularVelocity = Vector3.zero;
         active = false;
         dead = true;
+        GameMgr.AddDeath();
     }
 
     public void Win()

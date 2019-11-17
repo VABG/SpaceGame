@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -359,14 +360,16 @@ MonoBehaviour:
 
     Go to questionnaire by pressing above button.
 
-    Fill in general information.
+    Fill
+    in general information.
 
 
-    Press Start Game 1, which will start the first game.
+    Press Start Game 1, which will start the first
+    game.
 
 
-    When first game is completed, continue questionnaire until instructed  to play
-    again.
+    When first game is completed, continue questionnaire until instructed 
+    to play again.
 
 
     Play the second game, then complete questionnaire.
@@ -374,7 +377,8 @@ MonoBehaviour:
 
 
 
-    Thank you for participating!'
+    Thank
+    you for participating!'
 --- !u!222 &329527437
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -541,9 +545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054be08c5cb82e242953560f2d105b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - Level1_Cartoon
-  - Level2_Cartoon
 --- !u!4 &736280645
 Transform:
   m_ObjectHideFlags: 0
@@ -726,8 +727,9 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067266127}
   m_Enabled: 1
-  serializedVersion: 9
+  serializedVersion: 10
   m_Type: 1
+  m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
@@ -1060,6 +1062,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UI: {fileID: 2092768326}
   questionnaireURL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+  cartoonLevels:
+  - Cartoon_Level 1
+  - Cartoon_Level 2
+  realisticLevels:
+  - Realistic_Level 1
+  - Realistic_Level 2
 --- !u!4 &1529939303
 Transform:
   m_ObjectHideFlags: 0

@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 7d876975f831c2e4eadcca9aa37637cc
   - enabled: 1
-    path: Assets/Scenes/Level1_Cartoon.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Cartoon_Level 1.unity
+    guid: 198bb89f0fc9c704699d29a4af351669
   - enabled: 1
-    path: Assets/Scenes/Level2_Cartoon.unity
-    guid: 44f342001b6e21d44a95b136105f4e4a
+    path: Assets/Scenes/Cartoon_Level 2.unity
+    guid: d65e6ef225d904a4dba54c0ef69dbd20
+  - enabled: 1
+    path: Assets/Scenes/Realistic_Level 1.unity
+    guid: 5b17d7eadd7627746a16110a6d82a661
+  - enabled: 1
+    path: Assets/Scenes/Realistic_Level 2.unity
+    guid: 248e852bebd194f41aae0f6e3df2f62b
   m_configObjects: {}

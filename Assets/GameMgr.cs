@@ -11,11 +11,12 @@ public class GameMgr : MonoBehaviour
     private static int totalLevels;
     private static int currentLevel;
 
-    public string[] levels;
+    private static string[] levels;
 
-    public static void StartGame()
+    public static void StartGame(string[] lvls)
     {
-        GameMgr.totalLevels = _instance.levels.Length;
+        levels = lvls;
+        GameMgr.totalLevels = levels.Length;
         GameMgr.currentLevel = 0;
         GameMgr.allTimes = new float[GameMgr.totalLevels];
         GameMgr.allPoints = new int[GameMgr.totalLevels];
@@ -25,6 +26,11 @@ public class GameMgr : MonoBehaviour
     ///Singleton
     private static GameMgr _instance;
     public static GameMgr Instance { get { return _instance; } }
+    public static bool lastLevel()
+    {
+        if (currentLevel == totalLevels - 1) return true;
+        else return false;
+    }
 
     private void Awake()
     {
@@ -50,7 +56,7 @@ public class GameMgr : MonoBehaviour
         string scoreTable = "";
         for (int i = 0; i < totalLevels; i++)
         {
-            scoreTable += "Level" + (i + 1).ToString() + ": " + (allPoints[i] + (int)allTimes[i]).ToString() + " Deaths: " + deaths[i] + '\n';
+            scoreTable += "Level" + (i + 1).ToString() + " - " + (allPoints[i] + (int)allTimes[i]).ToString() + " Points   " + deaths[i] + " Deaths" + '\n';
         }
         return scoreTable;
     }
@@ -70,8 +76,8 @@ public class GameMgr : MonoBehaviour
     public static string NextLevel()
     {
         currentLevel++;
-        if (currentLevel >= totalLevels) return "Menu"; //TODO: Add final screen
-        return _instance.levels[currentLevel];
+        if (currentLevel >= totalLevels) return "Menu";
+        return levels[currentLevel];
     }
 
 }

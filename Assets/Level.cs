@@ -67,7 +67,7 @@ public class Level : MonoBehaviour
 
 
             case LevelState.FinalWin:
-                StartState();
+                FinalWinState();
                 break;
         }
     }
@@ -96,20 +96,26 @@ public class Level : MonoBehaviour
 
     public void SetFinalWin()
     {
-        levelState = LevelState.FinalWin;
-        
+        levelState = LevelState.FinalWin;        
         UIFinalScreen.SetActive(true);
+        UIFinalScore.text = GameMgr.GetScoreTable();
     }
 
     public void NextLevel()
     {
-        string nextLevel = GameMgr.NextLevel();
-        if (nextLevel == "Menu")
+        if (!GameMgr.lastLevel())
         {
-            SetFinalWin();
+            string nextLevel = GameMgr.NextLevel();            
+            SceneManager.LoadSceneAsync(nextLevel);
+            isChangingLevel = true;
         }
-        SceneManager.LoadSceneAsync(nextLevel);
-        isChangingLevel = true;
+        else
+        {
+            //Hide everything exept for final score menu
+            SetFinalWin();
+            UIScoreScreen.SetActive(false);
+            UIFinalScreen.SetActive(true);
+        }
     }
 
     private void FinalWinState()
