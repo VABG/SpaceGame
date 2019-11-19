@@ -571,9 +571,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press W to Accelerate
+  m_Text: 'Press W or UpArrow to Accelerate
 
-    Use A and D to Turn'
+    Use A and D , or Left Arrow &  Right
+    Arrow to Turn'
 --- !u!1 &276981702012829039
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,12 @@ public class GameMgr : MonoBehaviour
     private static int currentLevel;
 
     private static string[] levels;
+    private static string allResults;
+    private static int currentGame = 0;
 
-    public static void StartGame(string[] lvls)
+    public static void StartGame(string[] lvls, int game)
     {
+        currentGame = game;
         levels = lvls;
         GameMgr.totalLevels = levels.Length;
         GameMgr.currentLevel = 0;
@@ -78,6 +81,32 @@ public class GameMgr : MonoBehaviour
         currentLevel++;
         if (currentLevel >= totalLevels) return "Menu";
         return levels[currentLevel];
+    }
+
+    public static void SaveGameplayDataFromSession()
+    {
+        string results = currentGame.ToString() + "|";
+        for (int i = 0; i < levels.Length; i++)
+        {
+            results +=(int)allTimes[i] + "|";
+            results += allPoints[i] + "|";
+            results += deaths[i] + "|";
+        }
+        results += "#";
+        allResults += results;        
+    }
+
+    public static string GetGameplayData()
+    {
+        return allResults;
+    }
+
+    public static void CopyGameplayDataToClipboard()
+    {
+        var textEditor = new TextEditor();
+        textEditor.text = allResults;
+        textEditor.SelectAll();
+        textEditor.Copy();
     }
 
 }

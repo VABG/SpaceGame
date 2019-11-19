@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
     private void DoInput()
     {
         Vector3 acceleration = Vector3.zero;
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             body.AddRelativeForce(Vector3.up * accelerationForce * Time.deltaTime);
             if (!exhaustPFX.isEmitting) exhaustPFX.Play();
@@ -39,11 +39,11 @@ public class Player : MonoBehaviour
         else if (exhaustPFX.isEmitting) exhaustPFX.Stop();
 
         float rotation = 0;
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             rotation -= 1;
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             rotation += 1;
         }
