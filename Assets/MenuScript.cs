@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -53,16 +54,35 @@ public class MenuScript : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
-        //EditorApplication.ExitPlaymode();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#endif
     }
 
     public void GotoQuestionnaire()
     {
+#if UNITY_WEBGL
+		    OpenURL(questionnaireURL);
+#endif
+
+#if !UNITY_WEBGL
         Application.OpenURL(questionnaireURL);
+#endif
     }
 
     public void CopyDataToClipboard()
     {
+#if UNITY_WEBGL
+        CopyToClipboard(GameMgr.GetGameplayData());
+#endif
+#if !UNITY_WEBGL
         GameMgr.CopyGameplayDataToClipboard();
+#endif
     }
+
+    [DllImport("__Internal")]
+    private static extern void OpenURL(string url);
+
+    [DllImport("__Internal")]
+    private static extern void CopyToClipboard(string text);
 }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -318,7 +318,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Copy Results To Clipboard
+  m_Text: 'Copy Results To Clipboard
+
+'
 --- !u!222 &261882579
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1757,6 +1759,7 @@ GameObject:
   - component: {fileID: 2095036888}
   - component: {fileID: 2095036887}
   - component: {fileID: 2095036886}
+  - component: {fileID: 2095036889}
   m_Layer: 5
   m_Name: ExitBtn
   m_TagString: Untagged
@@ -1874,3 +1877,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095036884}
   m_CullTransparentMesh: 0
+--- !u!114 &2095036889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095036884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94e342dfebf6624ab4e755346a682f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
