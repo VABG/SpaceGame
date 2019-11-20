@@ -59,7 +59,7 @@ public class GameMgr : MonoBehaviour
         string scoreTable = "";
         for (int i = 0; i < totalLevels; i++)
         {
-            scoreTable += "Level" + (i + 1).ToString() + " - " + (allPoints[i] + (int)allTimes[i]).ToString() + " Points   " + deaths[i] + " Deaths" + '\n';
+            scoreTable += "Level " + (i + 1).ToString() + " - " + (allPoints[i] + (int)allTimes[i]).ToString() + " Points   " + deaths[i] + " Deaths" + '\n';
         }
         return scoreTable;
     }
